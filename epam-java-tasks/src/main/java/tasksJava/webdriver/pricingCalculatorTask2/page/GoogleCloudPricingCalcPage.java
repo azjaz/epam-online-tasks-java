@@ -105,8 +105,9 @@ public class GoogleCloudPricingCalcPage {
         driver.switchTo().frame(googleFrame);
         if(addGPUsCheckbox.getAttribute("aria-disabled").equals("false")) {
             if(!addGPUsCheckbox.isSelected()) {
-                new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(addGPUsCheckbox))
-                .click();
+                new WebDriverWait(driver, DRIVER_TIMEOUT).until(ExpectedConditions.elementToBeClickable(addGPUsCheckbox));
+                JavascriptExecutor executor = (JavascriptExecutor) driver;
+                executor.executeScript("arguments[0].click();", addGPUsCheckbox);
             }
             driver.findElement(By.xpath("//md-select[contains(@ng-model, 'computeServer.gpuCount')]"))
                     .sendKeys("1");
