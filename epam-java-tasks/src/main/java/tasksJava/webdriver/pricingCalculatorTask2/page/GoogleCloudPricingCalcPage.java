@@ -40,6 +40,9 @@ public class GoogleCloudPricingCalcPage {
     @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
     private WebElement addGPUsCheckbox;
 
+    @FindBy(xpath = "//md-select[contains(@ng-model, 'computeServer.gpuType')]")
+    private WebElement gpuTypeSelect;
+
     @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
     private WebElement localSSDSize;
 
@@ -111,11 +114,8 @@ public class GoogleCloudPricingCalcPage {
             }
             driver.findElement(By.xpath("//md-select[contains(@ng-model, 'computeServer.gpuCount')]"))
                     .sendKeys("1");
-            new WebDriverWait(driver, DRIVER_TIMEOUT)
-                    .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//md-select[contains(@ng-model, 'computeServer.gpuType')]")))
-                    .click();
-            driver.findElement(By.xpath("//md-option[contains(@value,'TESLA_V100')]"))
-                    .click();
+            fillFieldsWithDroppedList(driver, gpuTypeSelect, By.xpath("//md-option[contains(@value,'TESLA_V100')]"));
+
         }
         driver.switchTo().defaultContent();
         return this;
