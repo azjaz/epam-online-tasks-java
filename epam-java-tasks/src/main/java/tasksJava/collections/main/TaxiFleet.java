@@ -3,6 +3,7 @@ package tasksJava.collections.main;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import tasksJava.collections.taxicars.TaxiCar;
 
@@ -28,21 +29,19 @@ public class TaxiFleet {
 	}
 	
 	public TaxiFleet sortTaxiFleetOnFuelEconomy() {
-		Collections.sort(taxiCars, new Comparator<TaxiCar>() {
-			public int compare(TaxiCar obj1, TaxiCar obj2) {
-				return obj1.getFuelEconomy() - obj2.getFuelEconomy();
-			}
-		});
+		List<? extends TaxiCar> sortedByFuelEconomy = taxiCars
+				.stream()
+				.sorted((o1, o2) -> o1.getFuelEconomy() - o2.getFuelEconomy())
+				.collect(Collectors.toList());
 		return this;
 	}
 	
-	public TaxiCar getTaxiCarOnMaxSpeedBounds(int minBound, int maxBound) {
-		for(TaxiCar taxiCar : taxiCars) {
-			if(taxiCar.getMaxSpeed() > minBound && taxiCar.getMaxSpeed() < maxBound) {
-				return taxiCar;
-			}
-		}
-		return null;
+	public List<? extends TaxiCar> getTaxiCarOnMaxSpeedBounds(int minBound, int maxBound) {
+		List<? extends TaxiCar> carsInSpeedBounds = taxiCars
+				.stream()
+				.filter((p) -> p.getMaxSpeed() > minBound && p.getMaxSpeed() < maxBound)
+				.collect(Collectors.toList());
+		return carsInSpeedBounds;
 	}
 
 	@Override
