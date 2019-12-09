@@ -1,8 +1,8 @@
-import Planes.ExperimentalPlane;
+import planes.ExperimentalPlane;
 import models.MilitaryType;
-import Planes.MilitaryPlane;
-import Planes.PassengerPlane;
-import Planes.Plane;
+import planes.MilitaryPlane;
+import planes.PassengerPlane;
+import planes.Plane;
 
 import java.util.*;
 
@@ -19,19 +19,19 @@ public class Airport {
     }
 
 
-    public List<PassengerPlane> getPassangerPlanes() {
-        List<PassengerPlane> passangerPlanes = new ArrayList<>();
+    public List<PassengerPlane> getPassengerPlanes() {
+        List<PassengerPlane> passengerPlanes = new ArrayList<>();
         for (Plane plane : planes) {
         	if (plane instanceof PassengerPlane) {
-        		passangerPlanes.add((PassengerPlane) plane);
+        		passengerPlanes.add((PassengerPlane) plane);
         		}
         	}
-        return passangerPlanes;
+        return passengerPlanes;
     }
 
     
     public PassengerPlane getPlaneWithMaxCapacity() {
-        List<PassengerPlane> passengerPlanes = getPassangerPlanes();
+        List<PassengerPlane> passengerPlanes = getPassengerPlanes();
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
         for (int i = 0; i < passengerPlanes.size(); i++) {
             if (passengerPlanes.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {

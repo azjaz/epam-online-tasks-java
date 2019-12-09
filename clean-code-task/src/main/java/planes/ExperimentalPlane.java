@@ -1,4 +1,4 @@
-package Planes;
+package planes;
 
 import java.util.Objects;
 
@@ -18,10 +18,6 @@ public class ExperimentalPlane extends Plane{
 
     public ClassificationLevel getClassificationLevel(){
         return classificationLevel;
-    }
-
-    public void setClassificationLevel(ClassificationLevel classificationLevel){
-        this.classificationLevel = classificationLevel;
     }
 
     public ExperimentalTypes getType() {
@@ -44,8 +40,8 @@ public class ExperimentalPlane extends Plane{
 
     @Override
     public String toString() {
-        return "experimentalPlane{" +
-                "model='" + model + '\'' +
-                '}';
+        return super.toString().replace("}",
+                ", type=" + type + ", classificationLevel=" + classificationLevel +
+                        '}');
     }
 }
