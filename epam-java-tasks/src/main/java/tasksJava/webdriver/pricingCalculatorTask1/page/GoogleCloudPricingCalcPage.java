@@ -19,31 +19,31 @@ public class GoogleCloudPricingCalcPage {
     @FindBy(xpath = "//md-tab-item/div[contains(@class,'compute')]")
     private WebElement computeEngineBlock;
 
-    @FindBy(xpath = "//input[@id='input_53']")
+    @FindBy(xpath = "//input[contains(@ng-model,'.quantity')]")
     private WebElement numberOfInstances;
 
-    @FindBy(xpath = "//input[@id='input_54']")
+    @FindBy(xpath = "//input[contains(@ng-model,'computeServer.label')]")
     private WebElement purposeOfInstances;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_46']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.os')]")
     private WebElement softwareType;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_47']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.class')]")
     private WebElement vMachineClass;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_49']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.family')]")
     private WebElement vMachineType;
 
     @FindBy(xpath = "//md-checkbox[contains(@ng-model, 'computeServer.addGPUs')]")
     private WebElement addGPUsCheckbox;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_50']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.ssd')]")
     private WebElement localSSDSize;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_51']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.location')]")
     private WebElement datacenterLocation;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_52']")
+    @FindBy(xpath = "//md-select[contains(@ng-model,'computeServer.cud')]")
     private WebElement committedUsageTerm;
 
     @FindBy(xpath = "//form[@name='ComputeEngineForm']//button[contains(text(),'Add') and contains(text(),'Estimate')]")
@@ -88,7 +88,7 @@ public class GoogleCloudPricingCalcPage {
     }
     public GoogleCloudPricingCalcPage chooseVMachineClassBlock() {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(driver, vMachineClass, By.xpath("//md-option[contains(@id,'select_option_67')]"));
+        fillFieldsWithDroppedList(driver, vMachineClass, By.xpath("//md-option[contains(@id,'select_option_68')]"));
         driver.switchTo().defaultContent();
         return this;
     }
@@ -119,20 +119,20 @@ public class GoogleCloudPricingCalcPage {
     }
     public GoogleCloudPricingCalcPage chooseLocalSSDBlock() {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(driver, localSSDSize, By.xpath("//md-option[contains(@id,'select_option_172')]"));
+        fillFieldsWithDroppedList(driver, localSSDSize, By.xpath("//md-option[contains(@id,'select_option_173')]"));
         driver.switchTo().defaultContent();
         return this;
     }
     public GoogleCloudPricingCalcPage chooseDatacenterLocationBlock() {
         driver.switchTo().frame(googleFrame);
-        fillFieldsWithDroppedList(driver, datacenterLocation, By.xpath("//md-option[contains(@id,'select_option_185')]"));
+        fillFieldsWithDroppedList(driver, datacenterLocation, By.xpath("//md-option[contains(@id,'select_option_186')]"));
         driver.switchTo().defaultContent();
         return this;
     }
     public GoogleCloudPricingCalcPage chooseCommittedUsageBlock() {
         driver.switchTo().frame(googleFrame);
-        if(driver.findElement(By.xpath("//md-select[@id='select_85']")).getAttribute("aria-disabled").equals("false")) {
-            fillFieldsWithDroppedList(driver, committedUsageTerm, By.xpath("//md-option[contains(@id,'select_option_83')]"));
+        if(driver.findElement(By.xpath("//md-select[@id='select_86']")).getAttribute("aria-disabled").equals("false")) {
+            fillFieldsWithDroppedList(driver, committedUsageTerm, By.xpath("//md-option[contains(@id,'select_option_84')]"));
         }
         driver.switchTo().defaultContent();
         return this;
