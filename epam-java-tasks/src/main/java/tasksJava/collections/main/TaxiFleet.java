@@ -21,11 +21,9 @@ public class TaxiFleet {
 	}
 	
 	public int getTaxiFleetCost() {
-		int taxiFleetCost = 0;
-		for(TaxiCar taxiCar : taxiCars) {
-			taxiFleetCost += taxiCar.getCarPrice();
-		}
-		return taxiFleetCost;
+		return taxiCars.stream()
+				.mapToInt(TaxiCar :: getCarPrice)
+				.sum();
 	}
 	
 	public TaxiFleet sortTaxiFleetOnFuelEconomy() {
